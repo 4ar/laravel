@@ -1,5 +1,5 @@
-    @include('header')
-           <div class="flex-center position-ref full-height">
+@include('header')
+         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -16,10 +16,19 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                Hello, {{ $name }} <br>
-                Welcome to Laravel
+                    Article
                 </div>
-            </div>
+                <div class="Articles">
+                    @for ($i = 0; $i < 10; $i++)
+                    <div class="Article">
+                        <div class="title">Title {{ $i }} </div>
+                        <div class="discription">Lorem ipsum dolor sit amet consectetur adipisicing elit. At, totam!  </div>
+                    </div>
+                    @endfor
+                </div>
+
+
+          </div>
         </div>
     </body>
 </html>
