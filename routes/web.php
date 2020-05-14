@@ -17,10 +17,22 @@ Route::get('/', function () {
     return view('welcome', ['name' => 'USER']);
 });
 
-Route::get('/articals', function () {
-    return view('articals');
+Route::group(['prefix' => 'news'], function(){
+    Route::get('/','News\NewsController@news')
+        ->name('news');
+    Route::get('/{name}', 'News\NewsCatController@cat');
+    Route::get('/{name}/{id}/', 'News\NewsOneController@newsOne');
+    
+});
+Route::group(['prefix' => 'admin'], function(){
+    Route::get('/','Admin\IndexController@index')-> name('admin');
+    Route::post('/', 'Admin\IndexController@newsAdd' ) -> name('add'); 
 });
 
 Route::get('/about', function () {
     return view('about');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
