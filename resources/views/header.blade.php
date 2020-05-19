@@ -89,6 +89,7 @@
             <body>
             <nav class="menu">
                 <a href="/">Главная</a> 
-                <a href="/articals">Статьи</a>
+                <a href="/news">Статьи</a>
                 <a href="/about">О нас</a> 
+                <a href="/admin">Добавить статью</a> 
             </nav>
