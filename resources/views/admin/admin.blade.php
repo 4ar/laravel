@@ -1,5 +1,7 @@
-@include('header')
-<h1>{{$hello}}</h1>
+@extends('layouts/main')
+
+@section('content')
+
 <div style="margin: 10px">
         <form method="post" action="{{ route('add') }}">
         @csrf 
@@ -13,3 +15,4 @@
         <button type submit>OK</button>
         </form>
 </div>
+@endsection

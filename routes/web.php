@@ -13,9 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome', ['name' => 'USER']);
-});
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/awards', 'HomeController@awards')->name('awards');
+Route::get('/education', 'HomeController@education')->name('education');
+Route::get('/experience', 'HomeController@experience')->name('experience');
+Route::get('/interests', 'HomeController@interests')->name('interests');
+Route::get('/skills', 'HomeController@skills')->name('skills');
+
+
+
+
 
 Route::group(['prefix' => 'news'], function(){
     Route::get('/','News\NewsController@news')
@@ -24,15 +31,13 @@ Route::group(['prefix' => 'news'], function(){
     Route::get('/{name}/{id}/', 'News\NewsOneController@newsOne');
     
 });
+
 Route::group(['prefix' => 'admin'], function(){
     Route::get('/','Admin\IndexController@index')-> name('admin');
     Route::post('/', 'Admin\IndexController@newsAdd' ) -> name('add'); 
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
