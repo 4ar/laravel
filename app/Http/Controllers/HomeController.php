@@ -11,11 +11,13 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+   
+   /**
+    * public function __construct()
+    *{
+    *    $this->middleware('auth');
+    *}
+    */
     /**
      * Show the application dashboard.
      *
@@ -24,5 +26,31 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    
+    public function education()
+    {
+        return view('page.education');
+    }
+
+    public function experience()
+    {
+        return view('page.experience');
+    }
+
+    public function interests()
+    {
+        return view('page.interests');
+    }
+
+    public function skills()
+    {
+        return view('page.skills');
+    }
+
+    public function awards()
+    {
+        return view('page.awards');
     }
 }
