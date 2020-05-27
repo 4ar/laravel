@@ -1,6 +1,9 @@
 @extends('layouts/main')
 
 @section('content')
+
+@dump(env('DB_DATABASE'));
+
 <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
     <div class="w-100">
       <h1 class="mb-0">Clarence

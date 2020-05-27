@@ -42,8 +42,8 @@ Route::group(['prefix' => 'orderform'], function(){
 Route::group(['prefix' => 'news'], function(){
     Route::get('/','News\NewsController@news')
         ->name('news');
-    Route::get('/{name}', 'News\NewsCatController@cat');
-    Route::get('/{name}/{id}/', 'News\NewsOneController@newsOne');
+    Route::get('/{id}', 'News\NewsOneController@newsOne')
+        ->name('oneNews');
     
 });
 

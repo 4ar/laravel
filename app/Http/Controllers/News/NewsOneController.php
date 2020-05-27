@@ -7,34 +7,16 @@ use Illuminate\Http\Request;
 
 class NewsOneController extends DataController
 {
-    public function newsOne($name,$id)
+    public function newsOne($id)
     {
-        $news = $this->getNewsByID($id);
-           
-        if(!empty($news)) {
-            $html = <<<php
-            <h1>{$news['title']}</h1>
-            <div>{$news['inform']}</div>
-            <hr>
-            <a href="/news/">Назад</a>
-            php;
-    
-            return $html;
-        }
-    
-       return redirect('/news');
-    
-    }
-    
-    private function getNewsByID($id)
-    {
-        foreach ($this->news as $news) {
-            if ($news['id'] == $id){
-                return $news;
-            }
-        } /* end foreach */
-    
-        return [];
+        $news = \DB::select('SELECT id, title, inform, is_private FROM news WHERE id =:id',
+                ['id' => $id]
+        );
+
+        return view('news.oneNews', [
+
+                'news' => $news[0],
+        ]);
     
     }
 }
