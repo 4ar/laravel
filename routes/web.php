@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/2', function (){
+
+    return 'Тут должен быть текст';
+
+});
+
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/awards', 'HomeController@awards')->name('awards');
 Route::get('/education', 'HomeController@education')->name('education');
@@ -20,7 +27,15 @@ Route::get('/experience', 'HomeController@experience')->name('experience');
 Route::get('/interests', 'HomeController@interests')->name('interests');
 Route::get('/skills', 'HomeController@skills')->name('skills');
 
+Route::group(['prefix' => 'feedback'], function(){
+        Route::get('/', 'FeedbackController@index')->name('Feedback');
+        Route::post('/', 'FeedbackController@add')->name('SendFeedback');
+});
 
+Route::group(['prefix' => 'orderform'], function(){
+    Route::get('/', 'OrderController@index')->name('Order');
+    Route::post('/', 'OrderController@add')->name('SendOrder');
+});
 
 
 
@@ -36,6 +51,8 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/','Admin\IndexController@index')-> name('admin');
     Route::post('/', 'Admin\IndexController@newsAdd' ) -> name('add'); 
 });
+
+
 
 
 Auth::routes();
